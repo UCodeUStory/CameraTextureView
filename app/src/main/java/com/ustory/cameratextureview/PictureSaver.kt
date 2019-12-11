@@ -70,7 +70,7 @@ class PictureSaver(
                 throw java.lang.Exception("图片数据为Null")
             }
             val defaultSavePath =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).absolutePath + System.currentTimeMillis().toString() + ".png"
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).absolutePath + "/"+System.currentTimeMillis().toString() + ".png"
 
             return PictureSaver(
                 savePath ?: defaultSavePath,
