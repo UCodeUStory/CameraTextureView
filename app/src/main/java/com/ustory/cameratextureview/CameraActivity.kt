@@ -35,14 +35,11 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        textureview.startPreview()
-        Log.i("tag","onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        textureview.stopPreview()
-        textureview.munualRelease()
+
     }
 
     override fun onStop() {
@@ -50,7 +47,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-//        textureview.releaseTextureView()
+        textureview.releaseTextureView()
         super.onDestroy()
     }
 }
