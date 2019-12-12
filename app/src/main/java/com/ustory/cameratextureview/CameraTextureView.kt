@@ -163,6 +163,9 @@ class CameraTextureView(context: Context, attrs: AttributeSet) :
 
     private fun getOptimalSize(width: Int, height: Int, sizes: List<Camera.Size>): Camera.Size {
 
+        sizes.forEach {
+            Log.i("preview","optimalSize=${it.width}x${it.height}")
+        }
         val pictureSize = sizes[0]
 
         val candidates = ArrayList<Camera.Size>()
@@ -177,7 +180,7 @@ class CameraTextureView(context: Context, attrs: AttributeSet) :
             }
         }
         if (!candidates.isEmpty()) {
-            return Collections.min<Camera.Size>(candidates, sizeComparator)
+            return Collections.max<Camera.Size>(candidates, sizeComparator)
         }
 
         for (size in sizes) {
