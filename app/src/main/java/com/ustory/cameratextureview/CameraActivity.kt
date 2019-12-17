@@ -24,9 +24,8 @@ class CameraActivity : AppCompatActivity() {
         }
 
         iv_take_photo.setOnClickListener { textureview.take() }
-        iv_cancel.setOnClickListener { textureview.startPreview() }
+        iv_cancel.setOnClickListener { textureview.cancel() }
 
-        iv_confirm.setOnClickListener { textureview.startPreview() }
     }
 
     override fun onStart() {
@@ -47,7 +46,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        textureview.releaseTextureView()
+        textureview.destroy()
         super.onDestroy()
     }
 }

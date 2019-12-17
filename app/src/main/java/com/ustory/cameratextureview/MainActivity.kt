@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         checkPermission()
 
-        tv_launch_camera.setOnClickListener { startActivity(Intent(this,CameraActivity::class.java)) }
+        tv_launch_camera1.setOnClickListener { startActivity(Intent(this,CameraActivity::class.java)) }
     }
 
     private fun checkPermission() {

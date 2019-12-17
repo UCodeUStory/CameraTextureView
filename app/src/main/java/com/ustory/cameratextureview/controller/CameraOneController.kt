@@ -1,6 +1,7 @@
 package com.ustory.cameratextureview.controller
 
 import android.content.Context
+import android.graphics.SurfaceTexture
 import android.hardware.Camera
 import android.os.Build
 import android.util.Log
@@ -18,40 +19,54 @@ class CameraOneController(val context: Context) : ICameraController {
     private var preferredWidth = 1280
     private var preferredHeight = 720
 
+    private var isCanTakePicture = false
+
+    private var mPictureCallBack: Camera.PictureCallback? = null
+
     override fun openCamera() {
         mCamera = Camera.open()
         initParams()
     }
 
     override fun releaseCamera() {
-        if (mCamera != null) {
-            mCamera!!.stopPreview()
-            mCamera!!.release()
-            mCamera = null
-            isCanTakePicture = true
-        }
+        mCamera?.stopPreview()
+        mCamera?.release()
+        mCamera = null
+        isCanTakePicture = true
     }
 
     override fun startPreview() {
         if (mCamera != null && !isCanTakePicture) {
-            this@CameraTextureView.setBackgroundDrawable(null)
-            mCamera!!.startPreview()
+            mCamera?.startPreview()
             isCanTakePicture = true
         }
     }
 
     override fun stopPreview() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mCamera?.stopPreview()
+    }
+
+    override fun setTakePhotoListener(pictureCallBack: Camera.PictureCallback) {
+        this.mPictureCallBack = pictureCallBack
+    }
+
+    override fun setPreviewTexture(surfaceTexture: SurfaceTexture) {
+        mCamera?.setPreviewTexture(surfaceTexture)
     }
 
     override fun focusOnPoint(x: Int, y: Int, width: Int, height: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun take() {
         if (mCamera != null && isCanTakePicture) {
             isCanTakePicture = false
-            mCamera!!.takePicture(Camera.ShutterCallback { }, null, mPictureCallback)
+            if (mPictureCallBack == null) {
+                mPictureCallBack = object : Camera.PictureCallback {
+                    override fun onPictureTaken(data: ByteArray?, camera: Camera?) {
+                    }
+                }
+            }
+            mCamera?.takePicture(Camera.ShutterCallback { }, null, mPictureCallBack)
         }
     }
 
