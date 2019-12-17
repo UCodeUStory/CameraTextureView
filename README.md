@@ -6,3 +6,8 @@
 2. 相机的预览必须在TextureView 的onSurfaceTextureAvailable中startPreview
 
 3. 相机的配置必须要正确，尤其预览尺寸，如果不正确就会导致各种问题
+
+
+<div align="center">
+<img width="380" height="654" src="https://github.com/UCodeUStory/CameraTextureView/blob/master/camera1.png"/>
+</div>
