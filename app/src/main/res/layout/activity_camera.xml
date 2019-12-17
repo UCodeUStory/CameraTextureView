@@ -6,40 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".CameraActivity">
 
+
     <com.ustory.cameratextureview.CameraTextureView
         android:id="@+id/textureview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageView
-        android:id="@+id/iv_take_photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_take_photo"
-       />
+        android:background="#5C0F0F0F">
 
-    <ImageView
-        android:id="@+id/iv_cancel"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_take_photo_cancel"
-        />
+        <ImageView
+            android:id="@+id/iv_take_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_take_photo" />
 
-    <ImageView
-        android:id="@+id/iv_confirm"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginRight="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_take_photo_confirm"
-        />
+        <TextView
+            android:id="@+id/tv_cancel_shooting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:text="Cancel"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_re_shooting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:text="Reset"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="35dp"
+            android:text="Confirm"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
 
 </RelativeLayout>

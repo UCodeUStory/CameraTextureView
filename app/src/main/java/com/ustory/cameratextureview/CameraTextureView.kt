@@ -44,7 +44,7 @@ class CameraTextureView(context: Context, attrs: AttributeSet) :
         mCameraOneController.take()
     }
 
-    fun cancel() {
+    fun reset() {
         mCameraOneController.startPreview()
     }
 

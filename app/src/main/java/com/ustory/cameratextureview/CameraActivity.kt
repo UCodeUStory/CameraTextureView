@@ -8,6 +8,7 @@ import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.View
 import kotlinx.android.synthetic.main.activity_camera.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,26 +24,23 @@ class CameraActivity : AppCompatActivity() {
             }.create().save()
         }
 
-        iv_take_photo.setOnClickListener { textureview.take() }
-        iv_cancel.setOnClickListener { textureview.cancel() }
+        iv_take_photo.setOnClickListener {
+            tv_re_shooting.visibility = View.VISIBLE
+            tv_cancel_shooting.visibility = View.GONE
+            tv_confirm.visibility = View.VISIBLE
+            textureview.take()
+        }
+        tv_cancel_shooting.setOnClickListener { finish() }
+        tv_re_shooting.setOnClickListener {
+            tv_cancel_shooting.visibility = View.VISIBLE
+            tv_re_shooting.visibility = View.GONE
+            tv_confirm.visibility = View.GONE
+            textureview.reset()
+        }
+        tv_confirm.setOnClickListener {
+            finish()
+        }
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 
     override fun onDestroy() {
